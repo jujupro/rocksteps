@@ -38,7 +38,7 @@ function CartScreen() {
 
   return (
     <Row className="justify-content-center">
-      <Col md={7}>
+      <Col md={7} className="mt-4">
         <h3>Your Cart</h3>
         {cartItems.length === 0 ? (
           <Message variant="info">

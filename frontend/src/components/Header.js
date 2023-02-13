@@ -30,7 +30,7 @@ function Header() {
               {' '}
               <img
                 alt=""
-                src="/images/logo.png"
+                src="../images/logo.png"
                 width="33"
                 className="d-inline-block align-top"
               />{' '}

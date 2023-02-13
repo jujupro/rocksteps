@@ -23,15 +23,15 @@ function HomeScreen() {
 
   return (
     <div>
-      <Carousel>
+      <Carousel className="mb-3">
         <Carousel.Item>
-          <Image src="./images/home2.jpg" alt="home1" fluid />
+          <Image src="../images/home2.jpg" alt="home1" fluid />
           <Carousel.Caption>
             <h1>REACH NEW HEIGHTS</h1>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <Image src="./images/home1.jpg" alt="home2" fluid />
+          <Image src="../images/home1.jpg" alt="home2" fluid />
           <Carousel.Caption>
             <h1>ASCEND TO ADVENTURE</h1>
           </Carousel.Caption>
