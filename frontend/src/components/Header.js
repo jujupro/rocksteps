@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import Search from './Search'
+
 import { logout } from '../actions/userActions'
 
 function Header() {
@@ -30,7 +31,7 @@ function Header() {
               {' '}
               <img
                 alt=""
-                src="../images/logo.png"
+                src="/images/logo.png"
                 width="33"
                 className="d-inline-block align-top"
               />{' '}
