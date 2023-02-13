@@ -31,7 +31,7 @@ function Header() {
               {' '}
               <img
                 alt=""
-                src="/images/logo.png"
+                src="https://shop-rose-bucket.s3.amazonaws.com/logo.png"
                 width="33"
                 className="d-inline-block align-top"
               />{' '}
