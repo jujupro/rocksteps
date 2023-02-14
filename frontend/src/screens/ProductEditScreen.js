@@ -71,10 +71,13 @@ function ProductEditScreen() {
   }
 
   const uploadFileHandler = async (e) => {
-    const file = e.target.files[0]
+    const files = e.target.files
     const formData = new FormData()
 
-    formData.append('image', file)
+    for (let i = 0; i < files.length; i++) {
+      formData.append('images', files[i])
+    }
+
     formData.append('product_id', productId)
 
     setUploading(true)
@@ -91,7 +94,6 @@ function ProductEditScreen() {
         formData,
         config
       )
-
       setImage(data)
       setUploading(false)
     } catch (error) {
@@ -148,6 +150,7 @@ function ProductEditScreen() {
                 type="file"
                 custom="true"
                 onChange={uploadFileHandler}
+                multiple
               ></Form.Control>
 
               {uploading && <Loader />}

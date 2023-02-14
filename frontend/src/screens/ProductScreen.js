@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { Col, Row, Image, ListGroup, Button, Form } from 'react-bootstrap'
+import {
+  Col,
+  Row,
+  Image,
+  ListGroup,
+  Button,
+  Form,
+  Carousel,
+} from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -71,7 +79,20 @@ function ProductScreen() {
         <div>
           <Row className="mb-5 justify-content-center">
             <Col md={5}>
-              <Image src={product.image} alt={product.name} fluid />
+              <Carousel variant="dark">
+                {product.photos &&
+                  product.photos.length > 0 &&
+                  product.photos.map((photo) => (
+                    <Carousel.Item key={photo.id}>
+                      <Image
+                        src={photo.photo}
+                        alt={product.name}
+                        fluid
+                        className="d-block w-100 product-img"
+                      />
+                    </Carousel.Item>
+                  ))}
+              </Carousel>
             </Col>
 
             <Col md={{ span: 5, offset: 1 }}>

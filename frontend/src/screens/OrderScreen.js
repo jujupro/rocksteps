@@ -176,35 +176,35 @@ function OrderScreen() {
         <Col md={4}>
           <Card>
             <ListGroup variant="flush">
-              <ListGroup.Item>
+              <ListGroup.Item className="text-center">
                 <h3>Order Summary</h3>
               </ListGroup.Item>
 
               <ListGroup.Item>
                 <Row>
                   <Col>Items:</Col>
-                  <Col>${order.itemsPrice}</Col>
+                  <Col className="text-center">${order.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
 
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping:</Col>
-                  <Col>${order.shippingPrice}</Col>
+                  <Col className="text-center">${order.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
 
               <ListGroup.Item>
                 <Row>
                   <Col>Tax:</Col>
-                  <Col>${order.taxPrice}</Col>
+                  <Col className="text-center">${order.taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
 
               <ListGroup.Item>
                 <Row>
                   <Col>Total:</Col>
-                  <Col>${order.totalPrice}</Col>
+                  <Col className="text-center">${order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
 

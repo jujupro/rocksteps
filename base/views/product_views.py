@@ -3,10 +3,9 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from base.models import Product, Review
+from base.models import Product, Review, Photo
 from base.serializers import ProductSerializer
 from rest_framework import status
-
 
 @api_view(['GET'])
 def getProducts(request):
@@ -100,10 +99,10 @@ def uploadImage(request):
     product_id = data['product_id']
     product = Product.objects.get(_id=product_id)
 
-    product.image = request.FILES.get('image')
-    product.save()
-
-    return Response('Image was uploaded')
+    images = request.FILES.getlist('images')
+    for image in images:
+        photo = Photo.objects.create(product=product, photo=image)
+    return Response('Images were uploaded')
 
 
 @api_view(['POST'])

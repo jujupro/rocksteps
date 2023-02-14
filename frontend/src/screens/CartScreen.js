@@ -97,7 +97,7 @@ function CartScreen() {
       <Col md={3}>
         <Card className="mt-4">
           <ListGroup variant="flush">
-            <ListGroup.Item className="text-end">
+            <ListGroup.Item className="text-center">
               <h4>Order Summary</h4>
               <h6>
                 {cartItems.reduce((acc, item) => acc + item.qty, 0)} item(s)

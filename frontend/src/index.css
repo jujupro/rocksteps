@@ -35,6 +35,11 @@ h2 {
   color: black;
 }
 
+.navbar-header .navbar-brand {
+  height: 200px;
+  font-size: 100px !important;
+}
+
 .carousel-caption {
   position: absolute;
   top: 16rem;
@@ -45,7 +50,7 @@ h2 {
   color: #ffff;
 }
 
-.carousel img {
+.home-carousel img {
   display: block;
   padding: 0px;
   margin: 0px;

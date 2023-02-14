@@ -23,7 +23,7 @@ function HomeScreen() {
 
   return (
     <div>
-      <Carousel className="mb-3">
+      <Carousel className="mb-3 home-carousel">
         <Carousel.Item>
           <Image
             src="https://shop-rose-bucket.s3.amazonaws.com/home2.jpg"
