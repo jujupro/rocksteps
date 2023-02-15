@@ -47,6 +47,7 @@ def addOrderItems(request):
                 qty=i['qty'],
                 price=i['price'],
                 image=i['image'],
+                size=i['size'],
             )
 
             # Update stock in Product model

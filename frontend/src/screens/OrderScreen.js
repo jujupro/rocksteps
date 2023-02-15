@@ -159,7 +159,7 @@ function OrderScreen() {
                             {item.name}
                           </Link>
                         </Col>
-
+                        <Col md={3}>Size: {item.size}</Col>
                         <Col md={4}>
                           {item.qty} X ${item.price} = $
                           {(item.qty * item.price).toFixed(2)}

@@ -1,17 +1,26 @@
 import React, { useEffect } from 'react'
-import { Link, useParams, useNavigate, useSearchParams } from 'react-router-dom'
+import {
+  Link,
+  useParams,
+  useNavigate,
+  useSearchParams,
+  useLocation,
+} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import Message from '../components/Message'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 
 function CartScreen() {
-  let navigate = useNavigate()
-  let { id } = useParams()
-  let [searchParams] = useSearchParams()
-
+  const navigate = useNavigate()
+  const location = useLocation()
+  const { id } = useParams()
+  const params = new URLSearchParams(location.search)
+  const qty = Number(params.get('qty'))
+  const size = params.get('size')
   const productId = id
-  const qty = Number(searchParams.get('qty')) //...?qty=3
+
+  console.log(qty, size, id)
 
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart)
@@ -24,7 +33,7 @@ function CartScreen() {
 
   useEffect(() => {
     if (productId) {
-      dispatch(addToCart(productId, qty))
+      dispatch(addToCart(productId, qty, size))
     }
   }, [dispatch, productId, qty])
 
@@ -38,7 +47,7 @@ function CartScreen() {
 
   return (
     <Row className="justify-content-center">
-      <Col md={7} className="mt-4">
+      <Col md={8} className="mt-4">
         <h3>Your Cart</h3>
         {cartItems.length === 0 ? (
           <Message variant="info">
@@ -52,14 +61,14 @@ function CartScreen() {
                   <Col md={2}>
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
-                  <Col md={5}>
+                  <Col md={3}>
                     <Link className={`links`} to={`/product/${item.productId}`}>
                       {item.name}
                     </Link>
                   </Col>
 
                   <Col md={2}>${item.price}</Col>
-
+                  <Col md={2}>Size: {item.size}</Col>
                   <Col md={2}>
                     <Form.Control
                       as="select"
