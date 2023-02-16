@@ -10,7 +10,6 @@ import {
   Form,
   Carousel,
   Card,
-  ListGroupItem,
 } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
@@ -144,7 +143,7 @@ function ProductScreen() {
                               Size:
                             </Form.Label>
                           </Col>
-                          <Col md={7}>
+                          <Col md={8}>
                             <Form.Control
                               as="select"
                               value={size}

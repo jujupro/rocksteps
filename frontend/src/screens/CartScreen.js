@@ -1,11 +1,5 @@
 import React, { useEffect } from 'react'
-import {
-  Link,
-  useParams,
-  useNavigate,
-  useSearchParams,
-  useLocation,
-} from 'react-router-dom'
+import { Link, useParams, useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import Message from '../components/Message'
@@ -19,8 +13,6 @@ function CartScreen() {
   const qty = Number(params.get('qty'))
   const size = params.get('size')
   const productId = id
-
-  console.log(qty, size, id)
 
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart)

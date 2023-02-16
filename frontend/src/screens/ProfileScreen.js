@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Form, Button, Row, Col, Table } from 'react-bootstrap'
+import { Form, Button, Row, Col, Image, ListGroup } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
@@ -64,6 +64,16 @@ function ProfileScreen() {
       setMessage('')
     }
   }
+
+  function formatDate(dateStr) {
+    let date = new Date(dateStr)
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+  }
+
   return (
     <Row className="justify-content-between mt-2">
       <Col md={3}>
@@ -122,58 +132,69 @@ function ProfileScreen() {
       </Col>
 
       <Col md={8}>
-        <h3>My Orders</h3>
         {loadingOrders ? (
           <Loader />
         ) : errorOrders ? (
           <Message variant="danger">{errorOrders}</Message>
         ) : (
-          <Table
-            striped
-            responsive
-            className="table-sm justify-content-center text-center"
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
           >
-            <thead>
-              <tr>
-                <th>Order</th>
-                <th>Date</th>
-                <th>Total</th>
-                <th>Paid</th>
-                <th>Delivered</th>
-                <th></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {orders.map((order) => (
-                <tr key={order._id}>
-                  <td>{order._id}</td>
-                  <td>{order.createdAt.substring(0, 10)}</td>
-                  <td>${order.totalPrice}</td>
-                  <td>
-                    {order.isPaid ? (
-                      order.paidAt.substring(0, 10)
-                    ) : (
-                      <i className="fas fa-times" style={{ color: 'red' }}></i>
-                    )}
-                  </td>
-                  <td>
-                    {order.isDelivered ? (
-                      order.deliveredAt.substring(0, 10)
-                    ) : (
-                      <i className="fas fa-times" style={{ color: 'red' }}></i>
-                    )}
-                  </td>
-                  <td> </td>
-                  <td>
-                    <LinkContainer to={`/order/${order._id}`}>
-                      <Button className="btn-sm">View Details</Button>
-                    </LinkContainer>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+            <h3>My Orders</h3>
+            {orders.length === 0 && <p>You have no order.</p>}
+            <ListGroup>
+              {orders.map((order, index) => {
+                return (
+                  <Form
+                    className="my-2 mx-5"
+                    style={{ maxWidth: '450px', textAlign: 'left' }}
+                    key={index}
+                  >
+                    <ListGroup.Item>
+                      <LinkContainer to={`/order/${order._id}`}>
+                        <Row>
+                          <h5>
+                            {formatDate(order.createdAt.substring(0, 10))}{' '}
+                            <i className="fa-solid fa-arrow-right"></i> $
+                            {order.totalPrice}{' '}
+                          </h5>
+                          <hr></hr>
+                          {order.orderItems.map((product, index) => {
+                            return (
+                              <Row key={index}>
+                                <Col sm={3}>
+                                  <Image
+                                    style={{
+                                      maxHeight: '50px',
+                                      display: 'block',
+                                      margin: '0 auto',
+                                    }}
+                                    fluid
+                                    src={product.image}
+                                  ></Image>
+                                </Col>
+                                <Col sm={9}>
+                                  <small>{product.qty} X </small>
+                                  <small>{product.name}</small>
+                                  <p>
+                                    ${(product.qty * product.price).toFixed(2)}
+                                  </p>
+                                </Col>
+                              </Row>
+                            )
+                          })}
+                        </Row>
+                      </LinkContainer>
+                    </ListGroup.Item>
+                  </Form>
+                )
+              })}
+            </ListGroup>
+          </div>
         )}
       </Col>
     </Row>

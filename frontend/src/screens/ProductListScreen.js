@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Table, Button, Row, Col } from 'react-bootstrap'
+import { Table, Button, Row, Col, Image } from 'react-bootstrap'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
@@ -101,6 +101,7 @@ function ProductListScreen() {
           <Table striped bordered hover responsive className="table-sm">
             <thead>
               <tr>
+                <th></th>
                 <th>ID</th>
                 <th>NAME</th>
                 <th>PRICE</th>
@@ -113,12 +114,23 @@ function ProductListScreen() {
             <tbody>
               {products.map((product) => (
                 <tr key={product._id}>
+                  <td>
+                    <Image
+                      src={
+                        product.photos &&
+                        product.photos.length > 0 &&
+                        product.photos[0].photo
+                      }
+                      fluid
+                      rounded
+                      style={{ height: '45px', width: '45px' }}
+                    />
+                  </td>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
                   <td>${product.price}</td>
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
-
                   <td>
                     <LinkContainer to={`/admin/product/${product._id}/edit`}>
                       <Button variant="light" className="btn-sm">

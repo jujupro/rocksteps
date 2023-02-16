@@ -145,7 +145,7 @@ function OrderScreen() {
                   {order.orderItems.map((item, index) => (
                     <ListGroup.Item key={index}>
                       <Row>
-                        <Col md={1}>
+                        <Col md={2}>
                           <Image
                             src={item.image}
                             alt={item.name}
@@ -155,7 +155,10 @@ function OrderScreen() {
                         </Col>
 
                         <Col>
-                          <Link to={`/product/${item.product}`}>
+                          <Link
+                            to={`/product/${item.product}`}
+                            className="links"
+                          >
                             {item.name}
                           </Link>
                         </Col>
