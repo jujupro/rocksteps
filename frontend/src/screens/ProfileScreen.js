@@ -180,9 +180,19 @@ function ProfileScreen() {
                                 <Col sm={9}>
                                   <small>{product.qty} X </small>
                                   <small>{product.name}</small>
-                                  <p>
-                                    ${(product.qty * product.price).toFixed(2)}
-                                  </p>
+                                  <Row>
+                                    <Col>
+                                      <p>
+                                        $
+                                        {(product.qty * product.price).toFixed(
+                                          2
+                                        )}
+                                      </p>
+                                    </Col>
+                                    <Col>
+                                      <p>Size: {product.size}</p>
+                                    </Col>
+                                  </Row>
                                 </Col>
                               </Row>
                             )

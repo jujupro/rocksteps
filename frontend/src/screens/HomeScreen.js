@@ -23,28 +23,30 @@ function HomeScreen() {
 
   return (
     <div>
-      <Carousel className="mb-3 home-carousel">
-        <Carousel.Item>
-          <Image
-            src="https://shop-rose-bucket.s3.amazonaws.com/home2.jpg"
-            alt="home2"
-            fluid
-          />
-          <Carousel.Caption>
-            <h1>REACH NEW HEIGHTS</h1>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <Image
-            src="https://shop-rose-bucket.s3.amazonaws.com/home1.jpg"
-            alt="home1"
-            fluid
-          />
-          <Carousel.Caption>
-            <h1>ASCEND TO ADVENTURE</h1>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
+      {!searchStr && (
+        <Carousel className="mb-3 home-carousel">
+          <Carousel.Item>
+            <Image
+              src="https://shop-rose-bucket.s3.amazonaws.com/home2.jpg"
+              alt="home2"
+              fluid
+            />
+            <Carousel.Caption>
+              <h1>REACH NEW HEIGHTS</h1>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <Image
+              src="https://shop-rose-bucket.s3.amazonaws.com/home1.jpg"
+              alt="home1"
+              fluid
+            />
+            <Carousel.Caption>
+              <h1>ASCEND TO ADVENTURE</h1>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+      )}
 
       <h2>New Arrivals</h2>
       {loading ? (

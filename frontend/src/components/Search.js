@@ -27,7 +27,7 @@ function Search() {
         className="mx-2"
       ></Form.Control>
 
-      <Button type="submit" variant="outline-success">
+      <Button type="submit" variant="outline-info">
         <i className="fa fa-search"></i>
       </Button>
     </Form>

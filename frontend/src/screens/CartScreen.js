@@ -11,7 +11,7 @@ function CartScreen() {
   const { id } = useParams()
   const params = new URLSearchParams(location.search)
   const qty = Number(params.get('qty'))
-  const size = params.get('size')
+  const size = Number(params.get('size'))
   const productId = id
 
   const dispatch = useDispatch()
@@ -29,8 +29,8 @@ function CartScreen() {
     }
   }, [dispatch, productId, qty])
 
-  const removeFromCartHandler = (id) => {
-    dispatch(removeFromCart(id))
+  const removeFromCartHandler = (id, size) => {
+    dispatch(removeFromCart(id, size))
   }
 
   const checkoutHandler = () => {
@@ -47,8 +47,8 @@ function CartScreen() {
           </Message>
         ) : (
           <ListGroup variant="flush">
-            {cartItems.map((item) => (
-              <ListGroup.Item key={item.productId}>
+            {cartItems.map((item, index) => (
+              <ListGroup.Item key={index}>
                 <Row>
                   <Col md={2}>
                     <Image src={item.image} alt={item.name} fluid rounded />
@@ -67,11 +67,15 @@ function CartScreen() {
                       value={item.qty}
                       onChange={(e) =>
                         dispatch(
-                          addToCart(item.productId, Number(e.target.value))
+                          addToCart(
+                            item.productId,
+                            Number(e.target.value),
+                            item.size
+                          )
                         )
                       }
                     >
-                      {[...Array(item.countInStock).keys()].map((x) => (
+                      {[...Array(8).keys()].map((x) => (
                         <option key={x + 1} value={x + 1}>
                           {x + 1}
                         </option>
@@ -83,7 +87,9 @@ function CartScreen() {
                     <Button
                       type="button"
                       variant="light"
-                      onClick={() => removeFromCartHandler(item.productId)}
+                      onClick={() =>
+                        removeFromCartHandler(item.productId, item.size)
+                      }
                     >
                       <i className="fas fa-trash"></i>
                     </Button>
