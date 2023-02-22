@@ -34,12 +34,11 @@ function LoginScreen() {
 
   return (
     <FormContainer>
-      <h1>Sign In</h1>
+      <h2>Sign In</h2>
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email Address</Form.Label>
           <Form.Control
             type="email"
             placeholder="Email"
@@ -49,7 +48,6 @@ function LoginScreen() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
             placeholder="Password"
@@ -57,10 +55,11 @@ function LoginScreen() {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-
-        <Button type="submit" variant="primary">
-          Sign In
-        </Button>
+        <div className="d-grid mt-4">
+          <Button type="submit" className="btn btn-dark">
+            Sign In
+          </Button>
+        </div>
       </Form>
 
       <Row className="py-3">

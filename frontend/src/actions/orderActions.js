@@ -46,7 +46,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
       payload: data,
     })
 
-    //clear cart state and local storage after place order
+    //clear cart state and local storage
     dispatch({
       type: CART_CLEAR_ITEMS,
       payload: data,

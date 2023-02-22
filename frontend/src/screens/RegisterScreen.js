@@ -43,46 +43,42 @@ function RegisterScreen() {
 
   return (
     <FormContainer>
-      <h1>Sign In</h1>
+      <h2>Register</h2>
       {message && <Message variant="danger">{message}</Message>}
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="name" className="mb-3">
-          <Form.Label>Name</Form.Label>
           <Form.Control
             required
             type="name"
-            placeholder="Enter name"
+            placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Form.Group controlId="email" className="mb-3">
-          <Form.Label>Email Address</Form.Label>
           <Form.Control
             required
             type="email"
-            placeholder="Enter Email"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Form.Group controlId="password" className="mb-3">
-          <Form.Label>Password</Form.Label>
           <Form.Control
             required
             type="password"
-            placeholder="Enter Password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Form.Group controlId="passwordConfirm" className="mb-3">
-          <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             required
             type="password"
@@ -92,9 +88,11 @@ function RegisterScreen() {
           ></Form.Control>
         </Form.Group>
 
-        <Button type="submit" variant="primary">
-          Register
-        </Button>
+        <div className="d-grid mt-4">
+          <Button type="submit" className="btn btn-dark">
+            Register
+          </Button>
+        </div>
       </Form>
 
       <Row className="py-3">

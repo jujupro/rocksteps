@@ -79,7 +79,7 @@ function OrderListScreen() {
                 <td>
                   <LinkContainer to={`/order/${order._id}`}>
                     <Button variant="light" className="btn-sm">
-                      Details
+                      View
                     </Button>
                   </LinkContainer>
                 </td>

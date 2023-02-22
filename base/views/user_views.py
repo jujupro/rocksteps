@@ -27,7 +27,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
-
+#registerUser
 @api_view(['POST'])
 def registerUser(request):
     data = request.data

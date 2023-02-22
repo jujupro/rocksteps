@@ -29,7 +29,13 @@ function UserEditScreen() {
     success: successUpdate,
   } = userUpdate
 
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
   useEffect(() => {
+    if (!userInfo || !userInfo.isAdmin) {
+      navigate('/login')
+    }
     if (successUpdate) {
       dispatch({ type: USER_UPDATE_RESET })
       navigate('/admin/userlist')

@@ -76,8 +76,10 @@ function ProfileScreen() {
 
   return (
     <Row className="justify-content-between mt-2">
-      <Col md={3}>
-        <h3>My Profile</h3>
+      <Col md={4} className="my-4">
+        <div style={{ textAlign: 'center' }}>
+          <h3>My Details</h3>
+        </div>
 
         {message && <Message variant="danger">{message}</Message>}
         {error && <Message variant="danger">{error}</Message>}
@@ -106,10 +108,10 @@ function ProfileScreen() {
           </Form.Group>
 
           <Form.Group controlId="password" className="mb-3">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>Change Password</Form.Label>
             <Form.Control
               type="password"
-              placeholder="Password"
+              placeholder="Change Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></Form.Control>
@@ -124,14 +126,15 @@ function ProfileScreen() {
               onChange={(e) => setConfirmPassword(e.target.value)}
             ></Form.Control>
           </Form.Group>
-
-          <Button type="submit" variant="primary">
-            Update
-          </Button>
+          <div className="d-grid mt-4">
+            <Button type="submit" variant="primary">
+              Update
+            </Button>
+          </div>
         </Form>
       </Col>
 
-      <Col md={8}>
+      <Col md={7} className="my-4">
         {loadingOrders ? (
           <Loader />
         ) : errorOrders ? (
