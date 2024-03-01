@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import FormContainer from '../components/FormContainer'
 import { getUserDetails, updateUser } from '../actions/userActions'
 import { USER_UPDATE_RESET } from '../constants/userConstants'
 
@@ -59,52 +58,56 @@ function UserEditScreen() {
     <div>
       <Link to="/admin/userlist">Go Back</Link>
 
-      <FormContainer>
-        <h2>Edit User</h2>
-        {loadingUpdate && <Loader />}
-        {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
+      <Row className="justify-content-center">
+        <Col md={5}>
+          <h2>Edit User</h2>
+          {loadingUpdate && <Loader />}
+          {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
 
-        {loading ? (
-          <Loader />
-        ) : error ? (
-          <Message variant="danger">{error}</Message>
-        ) : (
-          <Form onSubmit={submitHandler}>
-            <Form.Group controlId="name" className="mb-3">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="name"
-                placeholder="Enter name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+          {loading ? (
+            <Loader />
+          ) : error ? (
+            <Message variant="danger">{error}</Message>
+          ) : (
+            <Form onSubmit={submitHandler}>
+              <Form.Group controlId="name" className="mb-3">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="name"
+                  placeholder="Enter name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
 
-            <Form.Group controlId="email" className="mb-3">
-              <Form.Label>Email Address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+              <Form.Group controlId="email" className="mb-3">
+                <Form.Label>Email Address</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Enter Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
 
-            <Form.Group controlId="isadmin" className="mb-3">
-              <Form.Check
-                type="checkbox"
-                label="Is Admin"
-                checked={isAdmin}
-                onChange={(e) => setIsAdmin(e.target.checked)}
-              ></Form.Check>
-            </Form.Group>
+              <Form.Group controlId="isadmin" className="mb-3">
+                <Form.Check
+                  type="checkbox"
+                  label="Is Admin"
+                  checked={isAdmin}
+                  onChange={(e) => setIsAdmin(e.target.checked)}
+                ></Form.Check>
+              </Form.Group>
 
-            <Button type="submit" variant="primary">
-              Update
-            </Button>
-          </Form>
-        )}
-      </FormContainer>
+              <div className="d-grid mt-4">
+                <Button type="submit" variant="primary">
+                  Update
+                </Button>
+              </div>
+            </Form>
+          )}
+        </Col>
+      </Row>
     </div>
   )
 }
